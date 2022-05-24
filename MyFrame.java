@@ -20,14 +20,14 @@ public class MyFrame extends Frame
         ml = new MyActionListener(this);
 
         JButton b1 = new JButton("myImage");
-        b1.setIcon(new ImageIcon(this.getClass().getResource("homeb1.png")));
+        b1.setIcon(new ImageIcon(this.getClass().getResource("Images/homeb1.png")));
         b1.setBounds(130,506,250,72);
         add(b1);
         b1.addActionListener(ml);
         
 
         JButton b4=new JButton("Add Student");
-        b4.setIcon(new ImageIcon(this.getClass().getResource("homeb2.png")));
+        b4.setIcon(new ImageIcon(this.getClass().getResource("Images/homeb2.png")));
         b4.setBounds(968,50,156,50);
         add(b4);
         b4.addActionListener(ml);
@@ -44,7 +44,7 @@ public class MyFrame extends Frame
     public void paint(Graphics g) 
     {  
         Toolkit t=Toolkit.getDefaultToolkit();  
-        Image i=t.getImage("home.png");  
+        Image i=t.getImage("Images/home.png");  
         g.drawImage(i, 0, 0,this);    
     }   
 

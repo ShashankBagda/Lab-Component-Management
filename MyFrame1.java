@@ -32,7 +32,7 @@ public class MyFrame1 extends Frame
 	public void paint(Graphics g) 
     {  
         Toolkit t=Toolkit.getDefaultToolkit();  
-        Image i=t.getImage("list.png");  
+        Image i=t.getImage("Images/list.png");  
         g.drawImage(i, 0, 0,this);  
     } 
 }

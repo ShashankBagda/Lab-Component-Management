@@ -16,7 +16,7 @@ public class MyFrame2 extends Frame
 		ml = new MyActionListener(this);
 		
         JButton b3 = new JButton("AddStud");
-        b3.setIcon(new ImageIcon(this.getClass().getResource("signupb3.png")));
+        b3.setIcon(new ImageIcon(this.getClass().getResource("Images/signupb3.png")));
 		b3.setBounds(635,666,326,56);
 		add(b3);
 		b3.addActionListener(ml);
@@ -49,7 +49,7 @@ public class MyFrame2 extends Frame
 	public void paint(Graphics g) 
     {  
         Toolkit t=Toolkit.getDefaultToolkit();  
-        Image i=t.getImage("signup.png");  
+        Image i=t.getImage("Images/signup.png");  
         g.drawImage(i, 0, 0,this);  
     } 
 }
