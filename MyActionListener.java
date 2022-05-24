@@ -26,18 +26,18 @@ public class MyActionListener implements ActionListener
 	
 	public void actionPerformed(ActionEvent e)
 	{
+		System.out.println(e.getActionCommand());
+
 		if(e.getActionCommand().equals("myImage"))
-        	{
-				System.out.println(e.getActionCommand() + "=" + this.mf.b1);
-				mf1 = new MyFrame1();
-				this.mf1.setVisible(true);
-				this.mf1.setExtendedState(mf1.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-				this.mf.setVisible(false);
-			}
+        {
+			mf1 = new MyFrame1();
+			this.mf1.setVisible(true);
+			this.mf1.setExtendedState(mf1.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+			this.mf.setVisible(false);
+		}
 
 		if(e.getActionCommand().equals("Add Student"))
 		{
-			System.out.println(e.getActionCommand()  + "=" + this.mf.b4);
 			mf2 = new MyFrame2();
 			this.mf2.setVisible(true);
 			this.mf2.setExtendedState(mf2.getExtendedState() | JFrame.MAXIMIZED_BOTH);
@@ -46,22 +46,30 @@ public class MyActionListener implements ActionListener
 		
 		if(e.getActionCommand().equals("Checkout"))
 		{
-			System.out.println(e.getActionCommand()  + "=" + this.mf1.b2);
 			mf = new MyFrame();
 			this.mf.setVisible(true);
 			this.mf.setExtendedState(mf.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 			this.mf1.setVisible(false);
 		}
 
-		if(e.getActionCommand().equals("AddEntry"))
+		if(e.getActionCommand().equals("AddStud"))
 		{
-			System.out.println(e.getActionCommand()  + "=" + this.mf2.b3);
 			mf = new MyFrame();
+
+			String name = this.mf2.t1.getText();
+			int Enroll = Integer.parseInt(this.mf2.t2.getText());
+			String Mail = this.mf2.t3.getText();
+			//String Pass = this.mf2.t4.getText();
+
+			System.out.println(name);
+			System.out.println(Enroll);
+			System.out.println(Mail);
+			//System.out.println(Pass);
+
 			this.mf.setVisible(true);
 			this.mf.setExtendedState(mf.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 			this.mf2.setVisible(false);
 		}
-		
-		
+
 	}
 }

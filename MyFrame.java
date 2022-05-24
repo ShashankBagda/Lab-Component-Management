@@ -12,20 +12,23 @@ public class MyFrame extends Frame
     JButton b1, b4;
     MyActionListener ml;
 
+    boolean bottonFlag = true;
+
     MyFrame()
     {
         setLayout(null);
         ml = new MyActionListener(this);
 
-        ImageIcon myImage = new ImageIcon("homeb1.png");
         JButton b1 = new JButton("myImage");
-        b1.setBounds(128,506,256,72);
+        b1.setIcon(new ImageIcon(this.getClass().getResource("homeb1.png")));
+        b1.setBounds(130,506,250,72);
         add(b1);
         b1.addActionListener(ml);
         
 
         JButton b4=new JButton("Add Student");
-        b4.setBounds(978,50,130,50);
+        b4.setIcon(new ImageIcon(this.getClass().getResource("homeb2.png")));
+        b4.setBounds(968,50,156,50);
         add(b4);
         b4.addActionListener(ml);
 
