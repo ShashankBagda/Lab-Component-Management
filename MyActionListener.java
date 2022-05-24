@@ -53,7 +53,7 @@ public class MyActionListener implements ActionListener
 			this.mf1.setVisible(false);
 		}
 
-		if(e.getActionCommand().equals("Sign Up"))
+		if(e.getActionCommand().equals("AddEntry"))
 		{
 			System.out.println(e.getActionCommand()  + "=" + this.mf2.b3);
 			mf = new MyFrame();

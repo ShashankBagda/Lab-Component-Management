@@ -7,17 +7,18 @@ import javax.swing.JFrame;
 
 public class MyFrame2 extends Frame
 {
-	Button b3;
+	JButton b3;
 	MyActionListener ml;
 	MyFrame2()
 	{
 		setLayout(null);
 		ml = new MyActionListener(this);
 		
-		
-		b3=new Button("Sign Up");
+		ImageIcon AddEntry = new ImageIcon("signupb3.png");
+        JButton b3 = new JButton(AddEntry);
+		//b3=new Button("Add Entry");
 		add(b3);
-		b3.setBounds(128,506,256,72);
+		b3.setBounds(635,666,326,56);
 		b3.addActionListener(ml);
 		
 		addWindowListener(new WindowAdapter()
