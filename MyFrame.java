@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.lang.*;
 import javax.swing.JFrame;  
 
-public class MyFrame extends Frame //extends Canvas
+public class MyFrame extends Frame
 {
     JButton b1, b4;
     MyActionListener ml;
@@ -18,7 +18,7 @@ public class MyFrame extends Frame //extends Canvas
         ml = new MyActionListener(this);
 
         ImageIcon myImage = new ImageIcon("homeb1.png");
-        JButton b1 = new JButton(myImage);
+        JButton b1 = new JButton("myImage");
         b1.setBounds(128,506,256,72);
         add(b1);
         b1.addActionListener(ml);

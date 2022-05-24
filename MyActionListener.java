@@ -27,13 +27,13 @@ public class MyActionListener implements ActionListener
 	public void actionPerformed(ActionEvent e)
 	{
 		if(e.getActionCommand().equals("myImage"))
-		{
-			System.out.println(e.getActionCommand() + "=" + this.mf.b1);
-			mf1 = new MyFrame1();
-			this.mf1.setVisible(true);
-			this.mf1.setExtendedState(mf1.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-			this.mf.setVisible(false);
-		}
+        	{
+				System.out.println(e.getActionCommand() + "=" + this.mf.b1);
+				mf1 = new MyFrame1();
+				this.mf1.setVisible(true);
+				this.mf1.setExtendedState(mf1.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+				this.mf.setVisible(false);
+			}
 
 		if(e.getActionCommand().equals("Add Student"))
 		{
