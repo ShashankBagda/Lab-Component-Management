@@ -9,10 +9,8 @@ import javax.swing.JFrame;
 
 public class MyFrame extends Frame
 {
-    JButton b1, b4;
+    JButton b1, b2;
     MyActionListener ml;
-
-    boolean bottonFlag = true;
 
     MyFrame()
     {
@@ -21,16 +19,16 @@ public class MyFrame extends Frame
 
         JButton b1 = new JButton("myImage");
         b1.setIcon(new ImageIcon(this.getClass().getResource("Images/homeb1.png")));
-        b1.setBounds(130,506,250,72);
+        b1.setBounds(135,507,250,72);
         add(b1);
         b1.addActionListener(ml);
         
 
-        JButton b4=new JButton("Add Student");
-        b4.setIcon(new ImageIcon(this.getClass().getResource("Images/homeb2.png")));
-        b4.setBounds(968,50,156,50);
-        add(b4);
-        b4.addActionListener(ml);
+        JButton b2=new JButton("Add Student");
+        b2.setIcon(new ImageIcon(this.getClass().getResource("Images/homeb2.png")));
+        b2.setBounds(968,50,156,50);
+        add(b2);
+        b2.addActionListener(ml);
 
         addWindowListener(new WindowAdapter()
             {

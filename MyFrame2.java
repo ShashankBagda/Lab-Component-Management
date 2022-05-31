@@ -1,3 +1,4 @@
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -7,7 +8,7 @@ import javax.swing.JFrame;
 
 public class MyFrame2 extends Frame
 {
-	JButton b3;
+	JButton b1;
 	TextField t1, t2, t3;
 	MyActionListener ml;
 	MyFrame2()
@@ -15,11 +16,11 @@ public class MyFrame2 extends Frame
 		setLayout(null);
 		ml = new MyActionListener(this);
 		
-        JButton b3 = new JButton("AddStud");
-        b3.setIcon(new ImageIcon(this.getClass().getResource("Images/signupb3.png")));
-		b3.setBounds(635,666,326,56);
-		add(b3);
-		b3.addActionListener(ml);
+        JButton b1 = new JButton("AddStud");
+        b1.setIcon(new ImageIcon(this.getClass().getResource("Images/signupb1.png")));
+		b1.setBounds(635,666,326,56);
+		add(b1);
+		b1.addActionListener(ml);
 
 		t1 = new TextField();
 		t2 = new TextField(6);

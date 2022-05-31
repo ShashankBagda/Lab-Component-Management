@@ -1,13 +1,15 @@
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import javax.swing.*;
 import java.lang.*;
 import javax.swing.JFrame;
+import javax.swing.border.Border;
 
 public class MyFrame1 extends Frame
 {
-	Button b2;
+	JButton b1,b2;
 	MyActionListener ml;
 	MyFrame1()
 	{
@@ -15,10 +17,17 @@ public class MyFrame1 extends Frame
 		ml = new MyActionListener(this);
 		
 		
-		b2=new Button("Checkout");
-		add(b2);
-		b2.setBounds(128,506,256,72);
-		b2.addActionListener(ml);
+		//b1=new Button("Checkout");
+		JButton b1 = new JButton("Checkout");
+        b1.setIcon(new ImageIcon(this.getClass().getResource("Images/homeb1.png")));
+		b1.setBounds(135,507,250,72);
+		add(b1);
+		b1.addActionListener(ml);
+
+		JButton b2 = new JButton("1");
+	    b2.setBounds(100, 100, 30, 25);
+	    add(b2);
+	    b2.addActionListener(ml);
 		
 		addWindowListener(new WindowAdapter()
 			{
