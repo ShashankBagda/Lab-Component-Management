@@ -1,4 +1,4 @@
-
+import java.lang.Long;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -58,14 +58,41 @@ public class MyActionListener implements ActionListener
 			mf = new MyFrame();
 
 			String name = this.mf2.t1.getText();
-			int Enroll = Integer.parseInt(this.mf2.t2.getText());
+			long Enroll = Long.parseLong(this.mf2.t2.getText());
 			String Mail = this.mf2.t3.getText();
 			//String Pass = this.mf2.t4.getText();
 
 			System.out.println(name);
 			System.out.println(Enroll);
 			System.out.println(Mail);
-			//System.out.println(Pass);
+
+			String s = new String("D:\\OOP-Project\\Records\\" + Enroll + ".txt");
+			File file = new File(s); 
+
+			boolean result;  
+			try   
+			{  
+				result = file.createNewFile();  //creates a new file  
+			
+				if(result)      // test if successfully created a new file  
+				{  
+					System.out.println("file created "+file.getCanonicalPath()); //returns the path string
+					FileWriter myWriter = new FileWriter(s);
+				    myWriter.write(name);
+				    myWriter.write("  --  ");
+				    myWriter.write(Mail);
+				    myWriter.close();  
+				}  
+				else  
+				{  
+					System.out.println("File already exist at location: "+file.getCanonicalPath());  
+				}  
+			}   
+			
+			catch (IOException est)   
+			{  
+				est.printStackTrace();    //prints exception if any  
+			}    
 
 			this.mf.setVisible(true);
 			this.mf.setExtendedState(mf.getExtendedState() | JFrame.MAXIMIZED_BOTH);
