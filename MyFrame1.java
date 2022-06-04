@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -9,7 +8,7 @@ import javax.swing.border.Border;
 
 public class MyFrame1 extends Frame
 {
-	JButton b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12;
+	JButton b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14;
 	MyActionListener ml;
 	MyFrame1()
 	{
@@ -87,6 +86,20 @@ public class MyFrame1 extends Frame
 	    b12.setBounds(1234, 675, 36, 38);
 	    add(b12);
 	    b12.addActionListener(ml);
+
+	    JButton b13=new JButton("homepg");
+        b13.setBackground(Color. WHITE);
+        b13.setIcon(new ImageIcon(this.getClass().getResource("Images/listhome.png")));
+        b13.setBounds(28,0,48,50);
+        add(b13);
+        b13.addActionListener(ml);
+
+        JButton b14=new JButton("shut");
+        b14.setBackground(Color. WHITE);
+        b14.setIcon(new ImageIcon(this.getClass().getResource("Images/listshut.png")));
+        b14.setBounds(1532,750,48,54);
+        add(b14);
+        b14.addActionListener(ml);
 		
 		addWindowListener(new WindowAdapter()
 			{

@@ -1,5 +1,3 @@
-// Running successfully and showing the image at exact position also the button
-
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -89,6 +87,7 @@ public class MyFrame extends Frame
                 public void windowClosing(WindowEvent we)
                 {
                     System.exit(0);
+                    //dispose();
                 }
             });
     }
@@ -107,7 +106,5 @@ public class MyFrame extends Frame
         JFrame f=new JFrame(); 
         f.add(mf);  
         f.setVisible(true);
-
-        
     }
 } 

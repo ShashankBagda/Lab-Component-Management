@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -26,7 +25,7 @@ public class MyFrame2 extends Frame
 		t2 = new TextField(6);
 		t3 = new TextField();
 
-		JPasswordField t4 = new JPasswordField(8); 
+		JPasswordField t4 = new JPasswordField(); 
 		
 		t1.setBounds(635,266,326,56);
 		t2.setBounds(635,370,326,56);

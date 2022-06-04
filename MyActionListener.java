@@ -73,10 +73,6 @@ public class MyActionListener implements ActionListener
 			this.mf.setVisible(true);
 			this.mf.setExtendedState(mf.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 			this.mf1.setVisible(false);
-
-			File directory = new File("D:\\OOP-Project\\Records");
-	        int fileCount = directory.list().length;
-	        this.mf.t1.setText(new Integer(fileCount).toString());
 		}
 
 		if(e.getActionCommand().equals("abtus"))
