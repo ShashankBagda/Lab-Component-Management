@@ -4,6 +4,7 @@ import java.io.*;
 import javax.swing.*;
 import java.lang.*;
 import javax.swing.JFrame;  
+import java.io.IOException;
 
 public class MyFrame extends Frame
 {
@@ -35,11 +36,14 @@ public class MyFrame extends Frame
         add(t2);
         add(t3);
 
+        //Count Component
+        // Writer wr = new FileWriter("D:\\OOP-Project\\Records\\component.txt");
+        // wr.write(100);
+        // wr.close();
+
         //Count Records
-        File directory = new File("D:\\OOP-Project\\Records");
+        File directory = new File("D:\\OOP-Project\\Student Records");
         int fileCount = directory.list().length;
-        //System.out.println("File Count:"+fileCount);
-        //t1.setHorizontalAlignment(JTextField.LEFT);
         t1.setText(new Integer(fileCount).toString());
 
 
@@ -99,7 +103,7 @@ public class MyFrame extends Frame
         g.drawImage(i, 0, 0,this);    
     }   
 
-    public static void main(String[] args) 
+    public static void main(String[] args)
     {
         MyFrame mf = new MyFrame(); 
         mf.setExtendedState(mf.getExtendedState() | JFrame.MAXIMIZED_BOTH);

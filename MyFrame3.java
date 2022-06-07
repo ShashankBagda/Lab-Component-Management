@@ -23,7 +23,7 @@ public class MyFrame3 extends Frame
 
         JButton b2 = new JButton("shut");
         b2.setIcon(new ImageIcon(this.getClass().getResource("Images/abtusshut.png")));
-		b2.setBounds(635,666,326,56);
+		b2.setBounds(1532,750,48,54);
 		add(b2);
 		b2.addActionListener(ml);
 

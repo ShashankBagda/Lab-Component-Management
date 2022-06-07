@@ -1,6 +1,7 @@
 import java.lang.Long;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.io.*;
 import javax.swing.*;
 import java.lang.*;
@@ -12,6 +13,7 @@ public class MyActionListener implements ActionListener
 	MyFrame1 mf1;
 	MyFrame2 mf2;
 	MyFrame3 mf3;
+	MyFrame4 mf4;
 	
 	MyActionListener(MyFrame m)
 	{
@@ -29,10 +31,15 @@ public class MyActionListener implements ActionListener
 	{
 		this.mf3 = m;
 	}
+	MyActionListener(MyFrame4 m)
+	{
+		this.mf4 = m;
+	}
 	
 	public void actionPerformed(ActionEvent e)
 	{
 		System.out.println(e.getActionCommand());
+		//song.play();
 
 		if(e.getActionCommand().equals("homepg"))
 		{
@@ -40,8 +47,10 @@ public class MyActionListener implements ActionListener
 			this.mf.setVisible(true);
 			this.mf.setExtendedState(mf.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 			this.mf1.setVisible(false);
+			this.mf2.setVisible(false);
+			this.mf3.setVisible(false);
 
-			File directory = new File("D:\\OOP-Project\\Records");
+			File directory = new File("D:\\OOP-Project\\Student Records");
 	        int fileCount = directory.list().length;
 	        this.mf.t1.setText(new Integer(fileCount).toString());
 		}
@@ -69,9 +78,9 @@ public class MyActionListener implements ActionListener
 		
 		if(e.getActionCommand().equals("Checkout"))
 		{
-			mf = new MyFrame();
-			this.mf.setVisible(true);
-			this.mf.setExtendedState(mf.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+			mf4 = new MyFrame4();
+			this.mf4.setVisible(true);
+			this.mf4.setExtendedState(mf4.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 			this.mf1.setVisible(false);
 		}
 
@@ -79,8 +88,55 @@ public class MyActionListener implements ActionListener
 		{
 			mf3 = new MyFrame3();
 			this.mf3.setVisible(true);
-			this.mf3.setExtendedState(mf.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+			this.mf3.setExtendedState(mf3.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 			this.mf.setVisible(false);
+		}
+
+		if(e.getActionCommand().equals("generate"))
+		{
+
+
+			ArrayList<String> results = new ArrayList<String>();
+
+
+			File[] files = new File("D:\\OOP-Project\\Student Records\\").listFiles();
+			//If this pathname does not denote a directory, then listFiles() returns null. 
+
+			for (File file : files) 
+			{
+			    if (file.isFile()) 
+			    {
+			        results.add(file.getName());
+			    }
+			}
+
+
+
+
+			// // link to file Test.class
+		 //    File file = new File("D:\\OOP-Project\\Student Records\\");
+
+		 //    // get file name using getName()
+		 //    String fileName = file.getName();
+		 //    System.out.println("File Name: " + fileName);
+
+
+
+
+
+			// File file = new File("D:\\OOP-Project\\Student Records\\");
+			// // convert the file into the string
+		    
+		 //    String stringFile = file.toString();
+		 //    //String name = this.mf4.t1.getText();
+
+		 //    int index = stringFile.lastIndexOf('\\');
+		    
+		 //    if(index > 0) 
+		 //    {
+			//     String fileName = stringFile.substring(index + 1);
+			//     System.out.println("File Name: " + fileName);
+		 //    }
 		}
 
 		if(e.getActionCommand().equals("AddStud"))
@@ -92,7 +148,7 @@ public class MyActionListener implements ActionListener
 			String Mail = this.mf2.t3.getText();
 			//String Pass = this.mf2.t4.getText();
 
-			File directory = new File("D:\\OOP-Project\\Records");
+			File directory = new File("D:\\OOP-Project\\Student Records");
 	        int fileCount = directory.list().length;
 	        this.mf.t1.setText(new Integer(fileCount).toString());
 
@@ -100,7 +156,7 @@ public class MyActionListener implements ActionListener
 			System.out.println(Enroll);
 			System.out.println(Mail);
 
-			String s = new String("D:\\OOP-Project\\Records\\" + Enroll + ".txt");
+			String s = new String("D:\\OOP-Project\\Student Records\\" + Enroll + ".txt");
 			File file = new File(s); 
 
 			boolean result;  

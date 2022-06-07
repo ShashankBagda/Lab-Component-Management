@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 
 public class MyFrame2 extends Frame
 {
-	JButton b1;
+	JButton b1, b2, b3;
 	TextField t1, t2, t3;
 	MyActionListener ml;
 	MyFrame2()
@@ -20,6 +20,19 @@ public class MyFrame2 extends Frame
 		b1.setBounds(635,666,326,56);
 		add(b1);
 		b1.addActionListener(ml);
+
+		JButton b2=new JButton("homepg");
+        b2.setBackground(Color. WHITE);
+        b2.setIcon(new ImageIcon(this.getClass().getResource("Images/signhome.png")));
+        b2.setBounds(28,0,48,50);
+        add(b2);
+        b2.addActionListener(ml);
+
+        JButton b3 = new JButton("shut");
+        b3.setIcon(new ImageIcon(this.getClass().getResource("Images/signshut.png")));
+		b3.setBounds(1532,750,48,54);
+		add(b3);
+		b3.addActionListener(ml);
 
 		t1 = new TextField();
 		t2 = new TextField(6);
@@ -49,7 +62,7 @@ public class MyFrame2 extends Frame
 	public void paint(Graphics g) 
     {  
         Toolkit t=Toolkit.getDefaultToolkit();  
-        Image i=t.getImage("Images/signup.png");  
+        Image i=t.getImage("Images/1.png");  
         g.drawImage(i, 0, 0,this);  
     } 
 }
