@@ -42,7 +42,7 @@ public class MyFrame extends Frame
         // wr.close();
 
         //Count Records
-        File directory = new File("D:\\OOP-Project\\Student Records");
+        File directory = new File("D:\\OOP-Project\\Student Records\\Email");
         int fileCount = directory.list().length;
         t1.setText(new Integer(fileCount).toString());
 
@@ -91,7 +91,6 @@ public class MyFrame extends Frame
                 public void windowClosing(WindowEvent we)
                 {
                     System.exit(0);
-                    //dispose();
                 }
             });
     }

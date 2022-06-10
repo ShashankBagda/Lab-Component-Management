@@ -14,7 +14,7 @@ public class MyFrame2 extends Frame
 	{
 		setLayout(null);
 		ml = new MyActionListener(this);
-		
+
         JButton b1 = new JButton("AddStud");
         b1.setIcon(new ImageIcon(this.getClass().getResource("Images/signupb1.png")));
 		b1.setBounds(635,666,326,56);
@@ -35,7 +35,7 @@ public class MyFrame2 extends Frame
 		b3.addActionListener(ml);
 
 		t1 = new TextField();
-		t2 = new TextField(6);
+		t2 = new TextField();
 		t3 = new TextField();
 
 		JPasswordField t4 = new JPasswordField(); 
@@ -62,7 +62,7 @@ public class MyFrame2 extends Frame
 	public void paint(Graphics g) 
     {  
         Toolkit t=Toolkit.getDefaultToolkit();  
-        Image i=t.getImage("Images/1.png");  
+        Image i=t.getImage("Images/add.png");  
         g.drawImage(i, 0, 0,this);  
     } 
 }

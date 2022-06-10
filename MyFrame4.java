@@ -7,8 +7,9 @@ import javax.swing.JFrame;
 
 public class MyFrame4 extends Frame
 {
-	JButton b1;//b2
-	TextField t1;
+	JButton b1, b2;
+	TextField t1, t2;
+	Font f1;
 	MyActionListener ml;
 	MyFrame4()
 	{
@@ -18,7 +19,15 @@ public class MyFrame4 extends Frame
 		t1 = new TextField();
 		t1.setBounds(200,236,370,56);
 		add(t1);
+
+		t2 = new TextField();
+		t2.setBounds(200,478,370,56);
+		add(t2);
 		
+		Font f1 = new Font("Comic Sans MS",Font.BOLD,30);
+
+		t1.setFont(f1);
+		t2.setFont(f1);
 
 		JButton b1=new JButton("generate");
         b1.setIcon(new ImageIcon(this.getClass().getResource("Images/gen.png")));
@@ -27,12 +36,12 @@ public class MyFrame4 extends Frame
         b1.setVisible(true);
         b1.addActionListener(ml);
 
-        // JButton b2=new JButton("regenerate");
-        // b2.setIcon(new ImageIcon(this.getClass().getResource("Images/genre.png")));
-        // b2.setBounds(200,345,370,56);
-        // add(b2);
-        // b2.setVisible(false);
-        // b2.addActionListener(ml);
+        JButton b2=new JButton("verify");
+        b2.setIcon(new ImageIcon(this.getClass().getResource("Images/ver.png")));
+        b2.setBounds(200,594,370,56);
+        add(b2);
+        b2.setVisible(true);
+        b2.addActionListener(ml);
 
 		addWindowListener(new WindowAdapter()
 			{
