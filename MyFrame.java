@@ -36,11 +36,6 @@ public class MyFrame extends Frame
         add(t2);
         add(t3);
 
-        //Count Component
-        // Writer wr = new FileWriter("D:\\OOP-Project\\Records\\component.txt");
-        // wr.write(100);
-        // wr.close();
-
         //Count Records
         File directory = new File("D:\\OOP-Project\\Student Records\\Email");
         int fileCount = directory.list().length;
@@ -60,7 +55,7 @@ public class MyFrame extends Frame
         add(b2);
         b2.addActionListener(ml);
 
-        JButton b3=new JButton("Return");
+        JButton b3=new JButton("return");
         b3.setIcon(new ImageIcon(this.getClass().getResource("Images/homeb3.png")));
         b3.setBounds(1150,50,156,50);
         add(b3);

@@ -1,12 +1,15 @@
 import java.lang.Long;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import java.io.*;
 import javax.swing.*;
 import java.lang.*;
 import javax.swing.JFrame;  
 import java.util.*;
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;   
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 //set classpath=mail.jar;activation.jar;.;
 
@@ -21,9 +24,14 @@ public class MyActionListener implements ActionListener
 	MyFrame2 mf2;
 	MyFrame3 mf3;
 	MyFrame4 mf4;
+	MyFrame5 mf5;
+	MyFrame6 mf6;
+	MyFrame7 mf7;
 
 	String main;
 	String verr;
+	String b;
+	int a;
 	
 	MyActionListener(MyFrame m)
 	{
@@ -45,7 +53,19 @@ public class MyActionListener implements ActionListener
 	{
 		this.mf4 = m;
 	}
-	
+	MyActionListener(MyFrame5 m)
+	{
+		this.mf5 = m;
+	}
+	MyActionListener(MyFrame6 m)
+	{
+		this.mf6 = m;
+	}
+	MyActionListener(MyFrame7 m)
+	{
+		this.mf7 = m;
+	}
+
 	public void actionPerformed(ActionEvent e)
 	{
 		System.out.println(e.getActionCommand());
@@ -63,6 +83,23 @@ public class MyActionListener implements ActionListener
 			File directory = new File("D:\\OOP-Project\\Student Records\\Email");
 	        int fileCount = directory.list().length;
 	        this.mf.t1.setText(new Integer(fileCount).toString());
+
+	        try
+	        {
+	        	FileReader fr=new FileReader("D:\\OOP-Project\\Records\\transaction.txt");    
+		        int i;    
+		        while((i=fr.read())!=-1)    
+		        System.out.print((char)i);    
+		        //this.mf.t3.setEchoChar((char)i);
+				fr.close();
+	       
+       			
+		    }
+	        catch(Exception qwe)
+	        {
+	        	System.out.println(qwe);
+	        }
+	        
 		}
 
 		if(e.getActionCommand().equals("shut"))
@@ -118,27 +155,20 @@ public class MyActionListener implements ActionListener
 			this.mf.setVisible(false);
 		}
 
+		if(e.getActionCommand().equals("return"))
+		{
+			mf6 = new MyFrame6();
+			this.mf6.setVisible(true);
+			this.mf6.setExtendedState(mf6.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+			this.mf.setVisible(false);
+		}
+
 		if(e.getActionCommand().equals("generate"))
 		{
 			String s = (this.mf4.t1.getText() + ".txt");
 			String z = new String("D:\\OOP-Project\\Student Records\\" + s);
 			String z2 = new String("D:\\OOP-Project\\Student Records\\Email\\" + s);
-			// System.out.println(z);
-
-			// try   
-			// {  
-			// 	FileWriter myWriter = new FileWriter(z, true);
-			// 	myWriter.write("\n\n");
-			// 	myWriter.write("Hello");
-			// 	myWriter.close();
-			// }   
 			
-			// catch (IOException est)   
-			// {  
-			// 	est.printStackTrace();
-			// } 
-
-
 			try 
 			{
 			    File myObj = new File(z2);
@@ -170,9 +200,9 @@ public class MyActionListener implements ActionListener
 
 
 			String host="smtp.gmail.com";  
-			final String user="shashank.bagda113475@marwadiuniversity.ac.in";//your email address
-			final String password="Cpdc@626";//password  
-			String to=main;//change accordingly  
+			final String user="shashank.bagda113475@marwadiuniversity.ac.in";
+			final String password="Cpdc@626";
+			String to=main;  
 	  
 			//Get the session object  
 			Properties props = new Properties();  
@@ -207,30 +237,6 @@ public class MyActionListener implements ActionListener
 			}
 		}
 
-
-		if(e.getActionCommand().equals("verify"))
-		{
-			
-			String uss = this.mf4.t2.getText();
-			String veri = this.verr;
-			if(uss == verr)
-			{
-				System.out.println("Issued Successfully !!!!!");
-			}
-			else
-			{
-				System.out.println("Invalid Code");
-			}
-		}
-
-
-
-		
-
-
-
-
-
 		if(e.getActionCommand().equals("AddStud"))
 		{
 			mf = new MyFrame();
@@ -238,8 +244,6 @@ public class MyActionListener implements ActionListener
 			String name = this.mf2.t1.getText();
 			long Enroll = Long.parseLong(this.mf2.t2.getText());
 			String Mail = this.mf2.t3.getText();
-			//String Pass = this.mf2.t4.getText();
-
 			
 			System.out.println(name);
 			System.out.println(Enroll);
@@ -271,18 +275,15 @@ public class MyActionListener implements ActionListener
 			
 			catch (IOException est)   
 			{  
-				est.printStackTrace();    //prints exception if any  
+				est.printStackTrace();
 			}
-
-
-
 
 			boolean result2;  
 			try   
 			{  
-				result2 = file2.createNewFile();  //creates a new file  
+				result2 = file2.createNewFile();   
 			
-				if(result2)      // test if successfully created a new file  
+				if(result2)     
 				{  
 					System.out.println("file created "+file2.getCanonicalPath()); //returns the path string
 					FileWriter myWriter2 = new FileWriter(s2);
@@ -297,11 +298,8 @@ public class MyActionListener implements ActionListener
 			
 			catch (IOException est2)   
 			{  
-				est2.printStackTrace();    //prints exception if any  
+				est2.printStackTrace();   
 			}
-
-
-
 
 			File directory = new File("D:\\OOP-Project\\Student Records");
 	        int fileCount = directory.list().length;
@@ -312,7 +310,6 @@ public class MyActionListener implements ActionListener
 			this.mf.setExtendedState(mf.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 			this.mf2.setVisible(false);
 		}
-
 
 		if(e.getActionCommand().equals("1"))
 		{
@@ -510,6 +507,178 @@ public class MyActionListener implements ActionListener
 			{  
 				est.printStackTrace();
 			} 
+		}
+
+
+// Everything is fine...
+
+
+		if(e.getActionCommand().equals("verify"))
+		{
+			String s = (this.mf4.t1.getText() + ".txt");
+			String z2 = new String("D:\\OOP-Project\\Student Records\\Email\\" + s);
+			
+			
+			String host="smtp.gmail.com";  
+			final String user="shashank.bagda113475@marwadiuniversity.ac.in";
+			final String password="Cpdc@626";
+			String to=main;
+	  
+			//Get the session object  
+			Properties props = new Properties();  
+			props.put("mail.smtp.host",host);  
+			props.put("mail.smtp.auth", "true");
+			props.put("mail.smtp.ssl.enable", "true");
+		
+	     
+			Session session = Session.getDefaultInstance(props,  
+					new javax.mail.Authenticator() 
+					{  
+						protected PasswordAuthentication getPasswordAuthentication() {  
+						return new PasswordAuthentication(user,password);  
+					}  
+				});  
+	  
+			//Compose the message  
+			try 
+			{  
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
+				LocalDateTime now = LocalDateTime.now();
+				String time = (dtf.format(now)).toString();
+				
+				MimeMessage message = new MimeMessage(session);  
+				message.setFrom(new InternetAddress(user));  
+				message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));  
+				message.setSubject("Lab Component Management");  
+				message.setText("Components Issued Successfully on "+ time +"\nList of Components are Attached with this Mail");  
+				Transport.send(message);  
+
+				// messageBodyPart = new MimeBodyPart();
+		  //       String filename = "D:\\OOP-Project\\Records\\list.txt";
+		  //       DataSource source = new FileDataSource(filename);
+		  //       messageBodyPart.setDataHandler(new DataHandler(source));
+		  //       messageBodyPart.setFileName(filename);
+		  //       multipart.addBodyPart(messageBodyPart);
+
+				System.out.println("message sent successfully...");  
+	   
+			} 
+			catch (MessagingException exn) 
+			{
+				exn.printStackTrace();
+			}
+				
+
+				mf5 = new MyFrame5();
+				this.mf5.setVisible(true);
+				this.mf5.setExtendedState(mf5.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+				this.mf4.setVisible(false);
+		
+		}	
+
+
+
+
+		if(e.getActionCommand().equals("retu"))
+		{
+		    
+			String s = (this.mf6.t1.getText() + ".txt");
+			String num = (this.mf6.t2.getText());
+			String z = new String("D:\\OOP-Project\\Student Records\\" + s);
+
+			try   
+			{  
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
+				LocalDateTime now = LocalDateTime.now();
+				String time = (dtf.format(now)).toString();
+				    
+				FileWriter myWriter = new FileWriter(z, true);
+				myWriter.write("\n\n");
+				myWriter.write("RETURNED SUCCESSFULLY - " + time);
+				myWriter.close();
+
+
+
+				FileReader fr=new FileReader("D:\\OOP-Project\\Records\\transaction.txt");    
+		        int i;   
+		        while((i=fr.read())!=-1) 
+		        this.a = Integer.parseInt(String.valueOf((int)i));
+		        this.a = a+1;
+		        FileWriter myWriter3 = new FileWriter("D:\\OOP-Project\\Records\\transaction.txt");
+				myWriter3.write(a);
+				myWriter3.close(); 
+		        fr.close(); 		
+			}   
+			
+			catch (IOException est1)   
+			{  
+				est1.printStackTrace();
+			}
+
+			String z2 = new String("D:\\OOP-Project\\Student Records\\Email\\" + s);
+			
+			try 
+			{
+			    File myObj = new File(z2);
+			    Scanner myReader = new Scanner(myObj);
+			    while (myReader.hasNextLine())
+			    {
+			        String data = myReader.nextLine();
+			        System.out.println(data);
+			        this.main = data;
+			    }
+			    myReader.close();
+		    } 
+		    catch (FileNotFoundException eqq) 
+		    {
+			    System.out.println("An error occurred.");
+			    eqq.printStackTrace();
+		    }
+
+
+
+			String host="smtp.gmail.com";  
+			final String user="shashank.bagda113475@marwadiuniversity.ac.in";
+			final String password="Cpdc@626"; 
+			String to=main;  
+	  
+			//Get the session object  
+			Properties props = new Properties();  
+			props.put("mail.smtp.host",host);  
+			props.put("mail.smtp.auth", "true");
+			props.put("mail.smtp.ssl.enable", "true");
+		
+	     
+			Session session = Session.getDefaultInstance(props,  
+					new javax.mail.Authenticator() 
+					{  
+						protected PasswordAuthentication getPasswordAuthentication() {  
+						return new PasswordAuthentication(user,password);  
+					}  
+				});  
+	  
+			//Compose the message  
+			try 
+			{  
+				MimeMessage message = new MimeMessage(session);  
+				message.setFrom(new InternetAddress(user));  
+				message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));  
+				message.setSubject("Lab Component Management");  
+				message.setText("Dear Student, \nYou have SUCCESSFULLY RETURNED Components...\nKeep Learning");  
+				Transport.send(message);  
+				System.out.println("message sent successfully...");  
+	   
+			} 
+			catch (MessagingException exn) 
+			{
+				exn.printStackTrace();
+			}
+
+
+			mf7 = new MyFrame7();
+			this.mf7.setVisible(true);
+			this.mf7.setExtendedState(mf7.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+			this.mf6.setVisible(false);
 		}
 
 	}
