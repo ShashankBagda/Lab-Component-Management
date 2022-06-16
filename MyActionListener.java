@@ -517,6 +517,7 @@ public class MyActionListener implements ActionListener
 		{
 			String s = (this.mf4.t1.getText() + ".txt");
 			String z2 = new String("D:\\OOP-Project\\Student Records\\Email\\" + s);
+			String z3 = new String("D:\\OOP-Project\\Student Records\\" + s);
 			
 			
 			String host="smtp.gmail.com";  
@@ -540,6 +541,7 @@ public class MyActionListener implements ActionListener
 				});  
 	  
 			//Compose the message  
+
 			try 
 			{  
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
@@ -560,12 +562,34 @@ public class MyActionListener implements ActionListener
 		  //       messageBodyPart.setFileName(filename);
 		  //       multipart.addBodyPart(messageBodyPart);
 
+				char ch[] = new char[5000];
+				FileReader fr = new FileReader("D:\\OOP-Project\\Records\\list.txt");
+				fr.read(ch);
+				fr.close();
+				String records = new String(ch);
+				String record[] = records.split(" ");
+
+
+				FileWriter fw=new FileWriter(z3,true);
+				fw.write("\n\n");
+				fw.write("ISSUED SUCCESSFULLY - " + time);
+				fw.write("\n");
+				for(int loop=0; loop<record.length ;loop++)
+				{
+					fw.write(""+record[loop]);
+				}
+				fw.close();
+
 				System.out.println("message sent successfully...");  
 	   
 			} 
 			catch (MessagingException exn) 
 			{
 				exn.printStackTrace();
+			}
+			catch (Exception aa)
+			{
+				System.out.println(aa);
 			}
 				
 
@@ -585,6 +609,7 @@ public class MyActionListener implements ActionListener
 			String s = (this.mf6.t1.getText() + ".txt");
 			String num = (this.mf6.t2.getText());
 			String z = new String("D:\\OOP-Project\\Student Records\\" + s);
+			//int value2 = Integer.parseInt(this.mf.t2.getText());
 
 			try   
 			{  
@@ -593,7 +618,7 @@ public class MyActionListener implements ActionListener
 				String time = (dtf.format(now)).toString();
 				    
 				FileWriter myWriter = new FileWriter(z, true);
-				myWriter.write("\n\n");
+				myWriter.write("\n");
 				myWriter.write("RETURNED SUCCESSFULLY - " + time);
 				myWriter.close();
 
