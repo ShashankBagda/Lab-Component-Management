@@ -198,12 +198,12 @@ public class MyActionListener implements ActionListener
 			Session session = Session.getDefaultInstance(props,  
 					new javax.mail.Authenticator() 
 					{  
-						protected PasswordAuthentication getPasswordAuthentication() {  
-						return new PasswordAuthentication(user,password);  
-					}  
+						protected PasswordAuthentication getPasswordAuthentication() 
+						{  
+							return new PasswordAuthentication(user,password);  
+						}  
 				});  
 	  
-			//Compose the message  
 			try 
 			{  
 				MimeMessage message = new MimeMessage(session);  
@@ -244,15 +244,16 @@ public class MyActionListener implements ActionListener
 			boolean result;  
 			try   
 			{  
-				result = file.createNewFile();  //creates a new file  
+				result = file.createNewFile();  
 			
-				if(result)      // test if successfully created a new file  
+				if(result)        
 				{  
-					System.out.println("file created "+file.getCanonicalPath()); //returns the path string
+					System.out.println("file created "+file.getCanonicalPath());
 					FileWriter myWriter = new FileWriter(s);
 				    myWriter.write(name + " - " + Cls);
 				    myWriter.close();  
 				}  
+				
 				else  
 				{  
 					System.out.println("File already exist at location: "+file.getCanonicalPath());  
@@ -271,7 +272,7 @@ public class MyActionListener implements ActionListener
 			
 				if(result2)     
 				{  
-					System.out.println("file created "+file2.getCanonicalPath()); //returns the path string
+					System.out.println("file created "+file2.getCanonicalPath()); 
 					FileWriter myWriter2 = new FileWriter(s2);
 				    myWriter2.write(Mail);
 				    myWriter2.close();  
@@ -532,12 +533,12 @@ public class MyActionListener implements ActionListener
 			Session session = Session.getDefaultInstance(props,  
 					new javax.mail.Authenticator() 
 					{  
-						protected PasswordAuthentication getPasswordAuthentication() {  
-						return new PasswordAuthentication(user,password);  
-					}  
+						protected PasswordAuthentication getPasswordAuthentication() 
+						{  
+							return new PasswordAuthentication(user,password);  
+						}  
 				});  
-	  
-			//Compose the message  
+	    
 
 			try 
 			{  
@@ -561,9 +562,7 @@ public class MyActionListener implements ActionListener
 				fw.write("\n\n");
 				for(int loop=0; loop<record.length ;loop++)
 				{
-					//fw.write(srNo);
 					fw.write(""+record[loop]);
-					//srNo++;
 				}
 				fw.close();
 
@@ -618,7 +617,6 @@ public class MyActionListener implements ActionListener
 				FileReader fr=new FileReader("D:\\OOP-Project\\Records\\transaction.txt");    
 		        int i;   
 		        while((i=fr.read())!=-1) 
-		        //this.a = Integer.parseInt(String.valueOf(((int)i));
 		        this.a = a+1;
 		        FileWriter myWriter3 = new FileWriter("D:\\OOP-Project\\Records\\transaction.txt");
 				myWriter3.write(String.valueOf(a));
@@ -633,8 +631,7 @@ public class MyActionListener implements ActionListener
 				est1.printStackTrace();
 			}
 
-			//this.mf.t3.setText(String.valueOf(a));
-
+			
 			String z2 = new String("D:\\OOP-Project\\Student Records\\Email\\" + s);
 			
 			try 
@@ -672,9 +669,10 @@ public class MyActionListener implements ActionListener
 			Session session = Session.getDefaultInstance(props,  
 					new javax.mail.Authenticator() 
 					{  
-						protected PasswordAuthentication getPasswordAuthentication() {  
-						return new PasswordAuthentication(user,password);  
-					}  
+						protected PasswordAuthentication getPasswordAuthentication() 
+						{  
+							return new PasswordAuthentication(user,password);  
+						}  
 				});  
 	  
 			try 
