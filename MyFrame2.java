@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 public class MyFrame2 extends Frame
 {
 	JButton b1, b2, b3;
-	TextField t1, t2, t3;
+	TextField t1, t2, t3, t4;
 	MyActionListener ml;
 	MyFrame2()
 	{
@@ -37,9 +37,8 @@ public class MyFrame2 extends Frame
 		t1 = new TextField();
 		t2 = new TextField();
 		t3 = new TextField();
+		t4 = new TextField();
 
-		JPasswordField t4 = new JPasswordField(); 
-		
 		t1.setBounds(635,266,326,56);
 		t2.setBounds(635,370,326,56);
 		t3.setBounds(635,472,326,56);

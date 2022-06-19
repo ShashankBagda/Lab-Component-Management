@@ -43,6 +43,18 @@ public class MyFrame4 extends Frame
         b2.setVisible(true);
         b2.addActionListener(ml);
 
+        JButton b3=new JButton("homepg");
+        b3.setIcon(new ImageIcon(this.getClass().getResource("Images/otphome.png")));
+        b3.setBounds(28,0,48,50);
+        add(b3);
+        b3.addActionListener(ml);
+
+        JButton b4 = new JButton("shut");
+        b4.setIcon(new ImageIcon(this.getClass().getResource("Images/otpshut.png")));
+		b4.setBounds(1532,750,48,54);
+		add(b4);
+		b4.addActionListener(ml);
+
 		addWindowListener(new WindowAdapter()
 			{
 				public void windowClosing(WindowEvent we)

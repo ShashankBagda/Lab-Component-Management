@@ -10,6 +10,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;   
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 //set classpath=mail.jar;activation.jar;.;
 
@@ -28,10 +31,8 @@ public class MyActionListener implements ActionListener
 	MyFrame6 mf6;
 	MyFrame7 mf7;
 
-	String main;
-	String verr;
-	String b;
-	int a;
+	String main, verr, b, tran;
+	int a, cot;
 	
 	MyActionListener(MyFrame m)
 	{
@@ -82,24 +83,7 @@ public class MyActionListener implements ActionListener
 
 			File directory = new File("D:\\OOP-Project\\Student Records\\Email");
 	        int fileCount = directory.list().length;
-	        this.mf.t1.setText(new Integer(fileCount).toString());
-
-	        try
-	        {
-	        	FileReader fr=new FileReader("D:\\OOP-Project\\Records\\transaction.txt");    
-		        int i;    
-		        while((i=fr.read())!=-1)    
-		        System.out.print((char)i);    
-		        //this.mf.t3.setEchoChar((char)i);
-				fr.close();
-	       
-       			
-		    }
-	        catch(Exception qwe)
-	        {
-	        	System.out.println(qwe);
-	        }
-	        
+	        this.mf.t1.setText(new Integer(fileCount).toString());	        
 		}
 
 		if(e.getActionCommand().equals("shut"))
@@ -244,10 +228,12 @@ public class MyActionListener implements ActionListener
 			String name = this.mf2.t1.getText();
 			long Enroll = Long.parseLong(this.mf2.t2.getText());
 			String Mail = this.mf2.t3.getText();
+			String Cls = this.mf2.t4.getText();
 			
 			System.out.println(name);
 			System.out.println(Enroll);
 			System.out.println(Mail);
+			System.out.println(Cls);
 
 			String s = new String("D:\\OOP-Project\\Student Records\\" + Enroll + ".txt");
 			File file = new File(s);
@@ -264,7 +250,7 @@ public class MyActionListener implements ActionListener
 				{  
 					System.out.println("file created "+file.getCanonicalPath()); //returns the path string
 					FileWriter myWriter = new FileWriter(s);
-				    myWriter.write(name);
+				    myWriter.write(name + " - " + Cls);
 				    myWriter.close();  
 				}  
 				else  
@@ -303,7 +289,7 @@ public class MyActionListener implements ActionListener
 
 			File directory = new File("D:\\OOP-Project\\Student Records");
 	        int fileCount = directory.list().length;
-	        this.mf.t1.setText(new Integer(fileCount).toString());
+	        this.mf.t1.setText(new Integer(fileCount-1).toString());
 
 
 			this.mf.setVisible(true);
@@ -494,9 +480,22 @@ public class MyActionListener implements ActionListener
 		if(e.getActionCommand().equals("Board"))
 		{
 			String z = new String("D:\\OOP-Project\\Records\\list.txt");
+
+
 			
 			try   
 			{  
+				FileReader fr=new FileReader("D:\\OOP-Project\\Records\\count.txt");    
+		        int i;   
+		        while((i=fr.read())!=-1) 
+		        this.cot = Integer.parseInt(String.valueOf((int)i));
+		        this.cot = cot-1;
+		        FileWriter myWriter3 = new FileWriter("D:\\OOP-Project\\Records\\count.txt");
+				myWriter3.write(cot);
+				myWriter3.close(); 
+		        fr.close();
+
+
 				FileWriter myWriter = new FileWriter(z, true);
 				myWriter.write("Board");
 				myWriter.write("\n");
@@ -509,8 +508,6 @@ public class MyActionListener implements ActionListener
 			} 
 		}
 
-
-// Everything is fine...
 
 
 		if(e.getActionCommand().equals("verify"))
@@ -547,41 +544,45 @@ public class MyActionListener implements ActionListener
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
 				LocalDateTime now = LocalDateTime.now();
 				String time = (dtf.format(now)).toString();
-				
-				MimeMessage message = new MimeMessage(session);  
-				message.setFrom(new InternetAddress(user));  
-				message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));  
-				message.setSubject("Lab Component Management");  
-				message.setText("Components Issued Successfully on "+ time +"\nList of Components are Attached with this Mail");  
-				Transport.send(message);  
 
-				// messageBodyPart = new MimeBodyPart();
-		  //       String filename = "D:\\OOP-Project\\Records\\list.txt";
-		  //       DataSource source = new FileDataSource(filename);
-		  //       messageBodyPart.setDataHandler(new DataHandler(source));
-		  //       messageBodyPart.setFileName(filename);
-		  //       multipart.addBodyPart(messageBodyPart);
 
-				char ch[] = new char[5000];
+
+				char ch[] = new char[500];
 				FileReader fr = new FileReader("D:\\OOP-Project\\Records\\list.txt");
 				fr.read(ch);
 				fr.close();
 				String records = new String(ch);
 				String record[] = records.split(" ");
 
-
+				//int srNo = 1;
 				FileWriter fw=new FileWriter(z3,true);
 				fw.write("\n\n");
 				fw.write("ISSUED SUCCESSFULLY - " + time);
-				fw.write("\n");
+				fw.write("\n\n");
 				for(int loop=0; loop<record.length ;loop++)
 				{
+					//fw.write(srNo);
 					fw.write(""+record[loop]);
+					//srNo++;
 				}
 				fw.close();
 
-				System.out.println("message sent successfully...");  
-	   
+
+
+				
+				MimeMessage message = new MimeMessage(session);  
+				message.setFrom(new InternetAddress(user));  
+				message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));  
+				message.setSubject("Lab Component Management");  
+				message.setText("Components Issued Successfully on "+ time +"\n\nList of Components is given below" + "\n\n" + records);  
+				Transport.send(message);  
+				
+				System.out.println("message sent successfully...");
+
+				mf5 = new MyFrame5();
+				this.mf5.setVisible(true);
+				this.mf5.setExtendedState(mf5.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+				this.mf4.setVisible(false);	   
 			} 
 			catch (MessagingException exn) 
 			{
@@ -590,17 +591,8 @@ public class MyActionListener implements ActionListener
 			catch (Exception aa)
 			{
 				System.out.println(aa);
-			}
-				
-
-				mf5 = new MyFrame5();
-				this.mf5.setVisible(true);
-				this.mf5.setExtendedState(mf5.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-				this.mf4.setVisible(false);
-		
+			}				
 		}	
-
-
 
 
 		if(e.getActionCommand().equals("retu"))
@@ -609,7 +601,7 @@ public class MyActionListener implements ActionListener
 			String s = (this.mf6.t1.getText() + ".txt");
 			String num = (this.mf6.t2.getText());
 			String z = new String("D:\\OOP-Project\\Student Records\\" + s);
-			//int value2 = Integer.parseInt(this.mf.t2.getText());
+			int value = Integer.parseInt(this.mf6.t2.getText());
 
 			try   
 			{  
@@ -618,8 +610,7 @@ public class MyActionListener implements ActionListener
 				String time = (dtf.format(now)).toString();
 				    
 				FileWriter myWriter = new FileWriter(z, true);
-				myWriter.write("\n");
-				myWriter.write("RETURNED SUCCESSFULLY - " + time);
+				myWriter.write("\n\nRETURNED SUCCESSFULLY - " + time + "\nPenalty - " + value*5);
 				myWriter.close();
 
 
@@ -627,18 +618,22 @@ public class MyActionListener implements ActionListener
 				FileReader fr=new FileReader("D:\\OOP-Project\\Records\\transaction.txt");    
 		        int i;   
 		        while((i=fr.read())!=-1) 
-		        this.a = Integer.parseInt(String.valueOf((int)i));
+		        //this.a = Integer.parseInt(String.valueOf(((int)i));
 		        this.a = a+1;
 		        FileWriter myWriter3 = new FileWriter("D:\\OOP-Project\\Records\\transaction.txt");
-				myWriter3.write(a);
+				myWriter3.write(String.valueOf(a));
 				myWriter3.close(); 
-		        fr.close(); 		
+		        fr.close(); 
+
+
 			}   
-			
+
 			catch (IOException est1)   
 			{  
 				est1.printStackTrace();
 			}
+
+			//this.mf.t3.setText(String.valueOf(a));
 
 			String z2 = new String("D:\\OOP-Project\\Student Records\\Email\\" + s);
 			
@@ -682,14 +677,13 @@ public class MyActionListener implements ActionListener
 					}  
 				});  
 	  
-			//Compose the message  
 			try 
 			{  
 				MimeMessage message = new MimeMessage(session);  
 				message.setFrom(new InternetAddress(user));  
 				message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));  
 				message.setSubject("Lab Component Management");  
-				message.setText("Dear Student, \nYou have SUCCESSFULLY RETURNED Components...\nKeep Learning");  
+				message.setText("Dear Student, \nYou have SUCCESSFULLY RETURNED Components...\nYou have to pay " + value*5 + " to the Administration."+ "\nKeep Learning");  
 				Transport.send(message);  
 				System.out.println("message sent successfully...");  
 	   
