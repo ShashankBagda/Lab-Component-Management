@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class MyFrame extends Frame
 {
-    JButton b1, b2, b3, b4, b6;
+    JButton b1, b2, b3, b4, b5;
     TextField t1;
     Font f1;
     MyActionListener ml;
@@ -55,12 +55,12 @@ public class MyFrame extends Frame
         add(b4);
         b4.addActionListener(ml);
 
-        JButton b6=new JButton("shut");
-        b6.setBackground(Color. WHITE);
-        b6.setIcon(new ImageIcon(this.getClass().getResource("Images/shut.png")));
-        b6.setBounds(1532,750,48,54);
-        add(b6);
-        b6.addActionListener(ml);
+        JButton b5=new JButton("shut");
+        b5.setBackground(Color. WHITE);
+        b5.setIcon(new ImageIcon(this.getClass().getResource("Images/shut.png")));
+        b5.setBounds(1532,750,48,54);
+        add(b5);
+        b5.addActionListener(ml);
 
         addWindowListener(new WindowAdapter()
             {

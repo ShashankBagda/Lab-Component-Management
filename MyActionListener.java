@@ -80,6 +80,9 @@ public class MyActionListener implements ActionListener
 			this.mf2.setVisible(false);
 			this.mf3.setVisible(false);
 			this.mf4.setVisible(false);
+			this.mf5.setVisible(false);
+			this.mf6.setVisible(false);
+			this.mf7.setVisible(false);
 
 			File directory = new File("D:\\OOP-Project\\Student Records\\Email");
 	        int fileCount = directory.list().length;
@@ -178,10 +181,7 @@ public class MyActionListener implements ActionListener
 			int value = (int)a;
 			String code=Integer.toString(value);
 			this.verr = code;
-			System.out.println(verr); 
-
-
-
+			System.out.println(verr);
 
 			String host="smtp.gmail.com";  
 			final String user="shashank.bagda113475@marwadiuniversity.ac.in";
@@ -481,22 +481,9 @@ public class MyActionListener implements ActionListener
 		if(e.getActionCommand().equals("Board"))
 		{
 			String z = new String("D:\\OOP-Project\\Records\\list.txt");
-
-
 			
 			try   
 			{  
-				FileReader fr=new FileReader("D:\\OOP-Project\\Records\\count.txt");    
-		        int i;   
-		        while((i=fr.read())!=-1) 
-		        this.cot = Integer.parseInt(String.valueOf((int)i));
-		        this.cot = cot-1;
-		        FileWriter myWriter3 = new FileWriter("D:\\OOP-Project\\Records\\count.txt");
-				myWriter3.write(cot);
-				myWriter3.close(); 
-		        fr.close();
-
-
 				FileWriter myWriter = new FileWriter(z, true);
 				myWriter.write("Board");
 				myWriter.write("\n");
@@ -622,8 +609,6 @@ public class MyActionListener implements ActionListener
 				myWriter3.write(String.valueOf(a));
 				myWriter3.close(); 
 		        fr.close(); 
-
-
 			}   
 
 			catch (IOException est1)   
@@ -697,6 +682,5 @@ public class MyActionListener implements ActionListener
 			this.mf7.setExtendedState(mf7.getExtendedState() | JFrame.MAXIMIZED_BOTH);
 			this.mf6.setVisible(false);
 		}
-
 	}
 }
