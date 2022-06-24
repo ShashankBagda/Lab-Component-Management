@@ -1,0 +1,12 @@
+1) LED
+2) LED
+3) LED
+4) LED
+5) LED
+6) LED
+7) LED
+8) Battery
+9) Battery
+10) Battery
+11) Battery
+12) Battery

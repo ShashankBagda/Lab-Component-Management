@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.lang.*;
 import javax.swing.JFrame;  
 import java.io.IOException;
+import sun.audio.*;
 
 public class MyFrame extends Frame
 {
@@ -61,6 +62,8 @@ public class MyFrame extends Frame
         b5.setBounds(1532,750,48,54);
         add(b5);
         b5.addActionListener(ml);
+
+        
 
         addWindowListener(new WindowAdapter()
             {
