@@ -13,7 +13,6 @@ import java.nio.file.Path;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import sun.audio.*;
 import javax.script.*;
 
 //set classpath=mail.jar;activation.jar;.;
@@ -33,6 +32,8 @@ public class MyActionListener implements ActionListener
 	MyFrame6 mf6;
 	MyFrame7 mf7;
 
+	String email_id = "Enter your email";
+	String email_password = "Enter your password";
 	String main, verr, b, tran;
 	int a, cot, bu2=1, bu3=1, bu4=1, bu5=1, bu6=1, bu7=1, bu8=1, bu9=1, bu10=1, bu11=1, bu12=1;
 	
@@ -73,21 +74,6 @@ public class MyActionListener implements ActionListener
 	{
 		System.out.println(e.getActionCommand());
 
-		try
-		{
-			String gongFile = "D:\\OOP-Project\\Sound\\pop.au";
-		    InputStream in = new FileInputStream(gongFile);
-
-		    AudioStream audioStream = new AudioStream(in);
-
-		    AudioPlayer.player.start(audioStream);
-		}
-		catch(Exception kl)
-		{
-			System.out.println(kl);
-		}	
-
-
 		if(e.getActionCommand().equals("homepg"))
 		{
 			mf = new MyFrame();
@@ -101,7 +87,7 @@ public class MyActionListener implements ActionListener
 			this.mf6.setVisible(false);
 			this.mf7.setVisible(false);
 
-			File directory = new File("D:\\OOP-Project\\Student Records\\Email");
+			File directory = new File("./Student Records/Email");
 	        int fileCount = directory.list().length;
 	        this.mf.t1.setText(new Integer(fileCount).toString());	        
 		}
@@ -117,34 +103,11 @@ public class MyActionListener implements ActionListener
 			int inc = Integer.parseInt(cart);
 			inc = inc - 1;
 			this.mf1.t1.setText("" + inc);
-			// File inputFile = new File("myFile.txt"); 
-			// File tempFile = new File("myTempFile.txt"); 
-			 
-			// BufferedReader reader = new BufferedReader(new FileReader(inputFile)); 
-			// BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile)); 
-			 
-			// String lineToRemove = "type here the line to remove from the text"; 
-			// String currentLine; 
-			 
-			// while((currentLine = reader.readLine()) != null) { 
-			 
-			// // trim newline when comparing with lineToRemove 
-			//     String trimmedLine = currentLine.trim(); 
-			    
-			//     if(trimmedLine.equals(lineToRemove)) continue; 
-			 
-			//     writer.write(currentLine + System.getProperty("line.separator")); 
-			// } 
-			 
-			// writer.close();  
-			// reader.close();  
-			 
-			// boolean successful = tempFile.renameTo(inputFile); 
 		}
 
 		if(e.getActionCommand().equals("myImage"))
         {
-        	String z = new String("D:\\OOP-Project\\Records\\list.txt");
+        	String z = new String("./Records/list.txt");
 
         	try
         	{
@@ -201,8 +164,8 @@ public class MyActionListener implements ActionListener
 		if(e.getActionCommand().equals("generate"))
 		{
 			String s = (this.mf4.t1.getText() + ".txt");
-			String z = new String("D:\\OOP-Project\\Student Records\\" + s);
-			String z2 = new String("D:\\OOP-Project\\Student Records\\Email\\" + s);
+			String z = new String("./Student Records/" + s);
+			String z2 = new String("./Student Records/Email/" + s);
 			
 			try 
 			{
@@ -232,8 +195,8 @@ public class MyActionListener implements ActionListener
 			System.out.println(verr);
 
 			String host="smtp.gmail.com";  
-			final String user="hitesh.jethava112656@marwadiuniversity.ac.in";
-			final String password="Jnaq@343";
+			final String user=email_id;
+			final String password=email_password;
 			String to=main;  
 	  
 			//Get the session object  
@@ -283,10 +246,10 @@ public class MyActionListener implements ActionListener
 			System.out.println(Mail);
 			System.out.println(Cls);
 
-			String s = new String("D:\\OOP-Project\\Student Records\\" + Enroll + ".txt");
+			String s = new String("./Student Records/" + Enroll + ".txt");
 			File file = new File(s);
 
-			String s2 = new String("D:\\OOP-Project\\Student Records\\Email\\" + Enroll + ".txt");
+			String s2 = new String("./Student Records/Email/" + Enroll + ".txt");
 			File file2 = new File(s2); 
 
 			boolean result;  
@@ -336,7 +299,7 @@ public class MyActionListener implements ActionListener
 				est2.printStackTrace();   
 			}
 
-			File directory = new File("D:\\OOP-Project\\Student Records");
+			File directory = new File("./Student Records");
 	        int fileCount = directory.list().length;
 	        this.mf.t1.setText(new Integer(fileCount-1).toString());
 
@@ -348,7 +311,7 @@ public class MyActionListener implements ActionListener
 
 		if(e.getActionCommand().equals("1"))
 		{
-			String z = new String("D:\\OOP-Project\\Records\\list.txt");
+			String z = new String("./Records/list.txt");
 
 			String cart = this.mf1.t1.getText();
 			int inc = Integer.parseInt(cart);
@@ -357,17 +320,6 @@ public class MyActionListener implements ActionListener
 
 			String swap = new String("this.mf1.b2.setIcon(new ImageIcon(this.getClass().getResource(\"Images/" + this.bu2 + ".png\")));");
 			System.out.println(swap);
-
-			// try 
-			// {
-			// 	ScriptEngineManager manager = new ScriptEngineManager();
-			// 	ScriptEngine engine = manager.getEngineByName("js");
-			// 	Object result = engine.eval(swap);
-			// }
-			// catch(Exception ii)
-			// {
-			// 	System.out.println(ii);
-			// }
 			this.bu2 = bu2+1;
 			
 			try   
@@ -386,7 +338,7 @@ public class MyActionListener implements ActionListener
 
 		if(e.getActionCommand().equals("2"))
 		{
-			String z = new String("D:\\OOP-Project\\Records\\list.txt");
+			String z = new String("./Records/list.txt");
 
 			String cart = this.mf1.t1.getText();
 			int inc = Integer.parseInt(cart);
@@ -409,7 +361,7 @@ public class MyActionListener implements ActionListener
 
 		if(e.getActionCommand().equals("3"))
 		{
-			String z = new String("D:\\OOP-Project\\Records\\list.txt");
+			String z = new String("./Records/list.txt");
 
 			String cart = this.mf1.t1.getText();
 			int inc = Integer.parseInt(cart);
@@ -432,7 +384,7 @@ public class MyActionListener implements ActionListener
 
 		if(e.getActionCommand().equals("4"))
 		{
-			String z = new String("D:\\OOP-Project\\Records\\list.txt");
+			String z = new String("./Records/list.txt");
 
 			String cart = this.mf1.t1.getText();
 			int inc = Integer.parseInt(cart);
@@ -455,7 +407,7 @@ public class MyActionListener implements ActionListener
 
 		if(e.getActionCommand().equals("5"))
 		{
-			String z = new String("D:\\OOP-Project\\Records\\list.txt");
+			String z = new String("./Records/list.txt");
 
 			String cart = this.mf1.t1.getText();
 			int inc = Integer.parseInt(cart);
@@ -478,7 +430,7 @@ public class MyActionListener implements ActionListener
 
 		if(e.getActionCommand().equals("6"))
 		{
-			String z = new String("D:\\OOP-Project\\Records\\list.txt");
+			String z = new String("./Records/list.txt");
 
 			String cart = this.mf1.t1.getText();
 			int inc = Integer.parseInt(cart);
@@ -501,7 +453,7 @@ public class MyActionListener implements ActionListener
 
 		if(e.getActionCommand().equals("7"))
 		{
-			String z = new String("D:\\OOP-Project\\Records\\list.txt");
+			String z = new String("./Records/list.txt");
 
 			String cart = this.mf1.t1.getText();
 			int inc = Integer.parseInt(cart);
@@ -524,7 +476,7 @@ public class MyActionListener implements ActionListener
 
 		if(e.getActionCommand().equals("8"))
 		{
-			String z = new String("D:\\OOP-Project\\Records\\list.txt");
+			String z = new String("./Records/list.txt");
 
 			String cart = this.mf1.t1.getText();
 			int inc = Integer.parseInt(cart);
@@ -547,7 +499,7 @@ public class MyActionListener implements ActionListener
 
 		if(e.getActionCommand().equals("LED"))
 		{
-			String z = new String("D:\\OOP-Project\\Records\\list.txt");
+			String z = new String("./Records/list.txt");
 
 			String cart = this.mf1.t1.getText();
 			int inc = Integer.parseInt(cart);
@@ -570,7 +522,7 @@ public class MyActionListener implements ActionListener
 
 		if(e.getActionCommand().equals("Battery"))
 		{
-			String z = new String("D:\\OOP-Project\\Records\\list.txt");
+			String z = new String("./Records/list.txt");
 
 			String cart = this.mf1.t1.getText();
 			int inc = Integer.parseInt(cart);
@@ -593,7 +545,7 @@ public class MyActionListener implements ActionListener
 
 		if(e.getActionCommand().equals("Board"))
 		{
-			String z = new String("D:\\OOP-Project\\Records\\list.txt");
+			String z = new String("./Records/list.txt");
 
 			String cart = this.mf1.t1.getText();
 			int inc = Integer.parseInt(cart);
@@ -614,18 +566,16 @@ public class MyActionListener implements ActionListener
 			} 
 		}
 
-
-
 		if(e.getActionCommand().equals("verify"))
 		{
 			String s = (this.mf4.t1.getText() + ".txt");
-			String z2 = new String("D:\\OOP-Project\\Student Records\\Email\\" + s);
-			String z3 = new String("D:\\OOP-Project\\Student Records\\" + s);
+			String z2 = new String("./Student Records/Email/" + s);
+			String z3 = new String("./OOP-Project/Student Records/" + s);
 			
 			
 			String host="smtp.gmail.com";  
-			final String user="hitesh.jethava112656@marwadiuniversity.ac.in";
-			final String password="Jnaq@343";
+			final String user=email_id;
+			final String password=email_password;
 			String to=main;
 	  
 			//Get the session object  
@@ -654,13 +604,12 @@ public class MyActionListener implements ActionListener
 
 
 				char ch[] = new char[500];
-				FileReader fr = new FileReader("D:\\OOP-Project\\Records\\list.txt");
+				FileReader fr = new FileReader("./Records/list.txt");
 				fr.read(ch);
 				fr.close();
 				String records = new String(ch);
 				String record[] = records.split(" ");
 
-				//int srNo = 1;
 				FileWriter fw=new FileWriter(z3,true);
 				fw.write("\n\n");
 				fw.write("ISSUED SUCCESSFULLY - " + time);
@@ -670,9 +619,6 @@ public class MyActionListener implements ActionListener
 					fw.write(""+record[loop]);
 				}
 				fw.close();
-
-
-
 				
 				MimeMessage message = new MimeMessage(session);  
 				message.setFrom(new InternetAddress(user));  
@@ -683,10 +629,6 @@ public class MyActionListener implements ActionListener
 				
 				System.out.println("message sent successfully...");
 
-				// mf5 = new MyFrame5();
-				// this.mf5.setVisible(true);
-				// this.mf5.setExtendedState(mf5.getExtendedState() | JFrame.MAXIMIZED_BOTH);
-				// this.mf4.setVisible(false);	   
 			} 
 			catch (MessagingException exn) 
 			{
@@ -709,7 +651,7 @@ public class MyActionListener implements ActionListener
 		    
 			String s = (this.mf6.t1.getText() + ".txt");
 			String num = (this.mf6.t2.getText());
-			String z = new String("D:\\OOP-Project\\Student Records\\" + s);
+			String z = new String("./Student Records/" + s);
 			int value = Integer.parseInt(this.mf6.t2.getText());
 
 			try   
@@ -724,11 +666,11 @@ public class MyActionListener implements ActionListener
 
 
 
-				FileReader fr=new FileReader("D:\\OOP-Project\\Records\\transaction.txt");    
+				FileReader fr=new FileReader("./Records/transaction.txt");    
 		        int i;   
 		        while((i=fr.read())!=-1) 
 		        this.a = a+1;
-		        FileWriter myWriter3 = new FileWriter("D:\\OOP-Project\\Records\\transaction.txt");
+		        FileWriter myWriter3 = new FileWriter("./Records/transaction.txt");
 				myWriter3.write(String.valueOf(a));
 				myWriter3.close(); 
 		        fr.close(); 
@@ -740,7 +682,7 @@ public class MyActionListener implements ActionListener
 			}
 
 			
-			String z2 = new String("D:\\OOP-Project\\Student Records\\Email\\" + s);
+			String z2 = new String("./Student Records/Email/" + s);
 			
 			try 
 			{
@@ -763,8 +705,8 @@ public class MyActionListener implements ActionListener
 
 
 			String host="smtp.gmail.com";  
-			final String user="hitesh.jethava112656@marwadiuniversity.ac.in";
-			final String password="Jnaq@343"; 
+			final String user=email_id;
+			final String password=email_password; 
 			String to=main;  
 	  
 			//Get the session object  
@@ -774,18 +716,6 @@ public class MyActionListener implements ActionListener
 			props.put("mail.smtp.auth", "true");
 			props.put("mail.smtp.ssl.enable", "true");
 
-			
-			// Properties props = new Properties();  
-			// props.put("mail.smtp.host",host);  
-			// props.put("mail.smtp.auth", "true");
-			// props.put("mail.smtp.port", "467");
-			// props.put("mail.smtp.ssl.enable", "true");
-			// props.put("mail.smtp.ssl.required", "true");
-			// props.put("mail.smtp.socketFactory.port","465");
-			// props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
-
-		
-	     
 			Session session = Session.getDefaultInstance(props,  
 					new javax.mail.Authenticator() 
 					{  

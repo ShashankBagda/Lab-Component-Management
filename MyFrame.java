@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.lang.*;
 import javax.swing.JFrame;  
 import java.io.IOException;
-import sun.audio.*;
 
 public class MyFrame extends Frame
 {
@@ -26,7 +25,7 @@ public class MyFrame extends Frame
         add(t1);
         
         //Count Records
-        File directory = new File("D:\\OOP-Project\\Student Records\\Email");
+        File directory = new File("./Student Records/Email");
         int fileCount = directory.list().length;
         t1.setText(new Integer(fileCount).toString());
 
